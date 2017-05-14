@@ -51,10 +51,6 @@ def create_csv(file):
         writer.writerow(headers)
 
 
-def create_df(data):
-    df = pd.DataFrame.from_csv(csv)
-    return df
-
 
 if __name__ == '__main__':
     main()
