@@ -3,8 +3,7 @@ import csv
 import os
 import xml.etree.ElementTree as ET
 
-from Database import create_db_table
-from sqlalchemy import create_engine
+from Database import insert_to_database
 
 
 def main():
@@ -56,14 +55,6 @@ def create_df(data):
     df = pd.DataFrame.from_csv(csv)
     return df
 
-
-def insert_to_database(data):
-    db = input('Enter path to DB: ')
-    if not os.path.isfile(db):
-        create_db_table(db)
-
-    engine = create_engine('sqlite:///%s' % db)
-    data.to_sql('glucose_val', con=engine, if_exists='append')
 
 if __name__ == '__main__':
     main()
